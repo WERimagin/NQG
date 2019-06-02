@@ -1,0 +1,10 @@
+*.ipynb
+*.pyc
+*.npy
+*.json
+*.txt
+*.tgz
+*.gz
+*.json
+*.st
+*.dic
