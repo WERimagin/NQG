@@ -27,7 +27,7 @@ TRAIN_FILE = 'mpqg_data/train_sent_pre.json'
 DEV_FILE = 'mpqg_data/dev_sent_pre.json'
 TEST_FILE=  'mpqg_data/test_sent_pre.json'
 
-origin_path="mpgq_data/"
+origin_path="mpqg_data/"
 train_file_sentence=os.path.join(origin_path,"squad-src-train-interro.txt")
 train_file_question=os.path.join(origin_path,"squad-tgt-train-interro.txt")
 train_file_answer=os.path.join(origin_path,"squad-ans-train-interro.txt")
