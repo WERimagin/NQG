@@ -38,7 +38,7 @@ if not os.path.exists('processed/'+ glove + '.dic.npy'):
         embedding[splited[0]] = map(float, splited[1:])
 
     # Save processed GloVe as dic file
-    np.save('processed/' + glove + '.dic', embedding)
+    #np.save('processed/' + glove + '.dic', embedding)
 else:
     print("here")
     embedding = np.load('processed/' + glove + '.dic.npy').item()
