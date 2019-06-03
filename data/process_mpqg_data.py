@@ -325,6 +325,10 @@ idx = 4
 for word in resized_dic:
     word2idx[word] = idx
     idx += 1
+    if type(word) is not str:
+        print(word)
+
+
 
 # Save dic
 with open(vocab_dir, 'w') as f:
