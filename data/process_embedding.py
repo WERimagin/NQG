@@ -53,8 +53,12 @@ else:
 
 # Load vocabulary
 
+print("here")
+
 with open(os.path.join(dic_dir, dic_name)) as f:
     vocab = pkl.load(f)
+
+print("here")
 
 
 # Initialize random embedding and extract pre-trained embedding
@@ -65,6 +69,8 @@ embedding_vocab[0] = 0.0 # vocab['<PAD>'] = 0
 embedding_vocab[1] = embedding['<s>'] # vocab['<GO>'] = 1
 embedding_vocab[2] = embedding['EOS'] # vocab['<EOS>'] = 2
 embedding_vocab[3] = embedding['UNKNOWN'] # vocab['<UNK>'] = 3
+
+print("here")
 
 unk_num = 0
 for word, idx in tqdm(vocab.items()):
