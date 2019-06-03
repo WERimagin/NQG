@@ -2,13 +2,17 @@ import tensorflow as tf
 
 from tensorflow.python.framework import ops
 from tensorflow.python.ops import rnn_cell_impl
+
 from tensorflow.contrib.rnn.python.ops import core_rnn_cell
 
 
+#RNNCell = rnn_cell_impl.RNNCell
+#_Linear = core_rnn_cell_impl._Linear
+#_like_rnncell = rnn_cell_impl._like_rnncell
+
 RNNCell = rnn_cell_impl.RNNCell
 _Linear = core_rnn_cell._Linear
-_like_rnncell = rnn_cell_impl._like_rnncell
-
+#_like_rnncell = rnn_cell_impl._like_rnncell
 
 class WeanWrapper(RNNCell):
     ''' Implementation of Word Embedding Attention Network(WEAN)
@@ -16,8 +20,8 @@ class WeanWrapper(RNNCell):
 
     def __init__(self, cell, embedding, use_context = True):
         super(WeanWrapper, self).__init__()
-        if not _like_rnncell(cell):
-            raise TypeError('The parameter cell is not RNNCell.')
+        #if not _like_rnncell(cell):
+        #    raise TypeError('The parameter cell is not RNNCell.')
 
         self._cell = cell
         self._embedding = embedding
@@ -61,8 +65,8 @@ class CopyWrapper(RNNCell):
 
     def __init__(self, cell, output_size, sentence_index, activation = None):
         super(CopyWrapper, self).__init__()
-        if not _like_rnncell(cell):
-            raise TypeError('The parameter cell is not RNNCell.')
+        #if not _like_rnncell(cell):
+        #    raise TypeError('The parameter cell is not RNNCell.')
 
         self._cell = cell
         self._output_size = output_size
