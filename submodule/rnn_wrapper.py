@@ -2,10 +2,11 @@ import tensorflow as tf
 
 from tensorflow.python.framework import ops
 from tensorflow.python.ops import rnn_cell_impl
+from tensorflow.contrib.rnn.python.ops import core_rnn_cell
 
 
 RNNCell = rnn_cell_impl.RNNCell
-_Linear = rnn_cell_impl._Linear
+_Linear = core_rnn_cell_impl._Linear
 _like_rnncell = rnn_cell_impl._like_rnncell
 
 
@@ -48,7 +49,7 @@ class WeanWrapper(RNNCell):
             query = tf.layers.dense(tf.concat([output, context], -1), hidden_size, tf.tanh, name = 'q_t')
         else:
             query = output
-        
+
         qw = tf.layers.dense(query, embedding_size, name = 'qW')
         score = tf.matmul(qw, self._embedding, transpose_b = True, name = 'score')
         return score, res_state
@@ -57,7 +58,7 @@ class WeanWrapper(RNNCell):
 class CopyWrapper(RNNCell):
     ''' Implementation of Copy Mechanism
     '''
-    
+
     def __init__(self, cell, output_size, sentence_index, activation = None):
         super(CopyWrapper, self).__init__()
         if not _like_rnncell(cell):
@@ -68,7 +69,7 @@ class CopyWrapper(RNNCell):
         self._sentence_index = sentence_index
         self._activation = activation
         self._linear = None
-        
+
     @property
     def state_size(self):
         return self._cell.state_size
@@ -76,11 +77,11 @@ class CopyWrapper(RNNCell):
     @property
     def output_size(self):
         return self._output_size
-    
+
     def zero_state(self, batch_size, dtype):
         with ops.name_scope(type(self).__name__ + "ZeroState", values =[batch_size]):
             return self._cell.zero_state(batch_size, dtype)
-    
+
     def attention_vocab(attention_weight, sentence_index):
         ''' return indices and updates for tf.scatter_nd_update
 
@@ -126,7 +127,6 @@ class CopyWrapper(RNNCell):
         weighted_c = tf.layers.dense(current_attention, 1)
         weighted_s = tf.layers.dense(previous_state, 1)
         g = tf.sigmoid(weighted_c + weighted_s)
-        
+
         p_final = g * p_vocab + (1-g)*p_attn
         return p_final, res_state
-
