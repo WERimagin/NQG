@@ -6,7 +6,7 @@ from tensorflow.contrib.rnn.python.ops import core_rnn_cell
 
 
 RNNCell = rnn_cell_impl.RNNCell
-_Linear = core_rnn_cell_impl._Linear
+_Linear = core_rnn_cell._Linear
 _like_rnncell = rnn_cell_impl._like_rnncell
 
 
