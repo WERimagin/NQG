@@ -44,7 +44,7 @@ squad(){
 
 # Pass the first argument as the name of dataset
 # Pass the second argument as mode
-# Pass the third argument to name the trained model 
+# Pass the third argument to name the trained model
 # Pass the fourth arqugment to adjust training epoch
 
 $1 # the name of processed dataset

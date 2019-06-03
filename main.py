@@ -17,15 +17,15 @@ def remove_eos(sentence, eos = '<EOS>', pad = '<PAD>'):
         return sentence + '\n'
 
 def write_result(predict_results, dic_path):
-    print 'Load dic file...'
+    print('Load dic file...')
     with open(dic_path) as dic:
         dic_file = pkl.load(dic)
     reversed_dic = dict((y,x) for x,y in dic_file.iteritems())
-    
-    print 'Writing into file...'
+
+    print('Writing into file...')
     with open(FLAGS.pred_dir, 'w') as f:
         while True:
-            try : 
+            try :
                 output = predict_results.next()
                 output = output['question'].tolist()
                 if -1 in output: # beam search
@@ -33,23 +33,23 @@ def write_result(predict_results, dic_path):
                 indices = [reversed_dic[index] for index in output]
                 sentence = ' '.join(indices)
                 sentence = remove_eos(sentence)
-                f.write(sentence.encode('utf-8'))
+                f.write(sentence)
 
             except StopIteration:
                 break
 
-    
+
 def main(unused):
-    
+
     # Enable logging for tf.estimator
     tf.logging.set_verbosity(tf.logging.INFO)
-    
+
     # Config
     config = tf.contrib.learn.RunConfig(
-            model_dir = FLAGS.model_dir, 
-            keep_checkpoint_max = 3, 
+            model_dir = FLAGS.model_dir,
+            keep_checkpoint_max = 3,
             save_checkpoints_steps = 100)
-    
+
     # Load parameters
     model_params = getattr(params, FLAGS.params)().values()
 
@@ -58,7 +58,7 @@ def main(unused):
 
     # Define estimator
     nn = tf.estimator.Estimator(model_fn=model.q_generation, config = config, params=model_params)
-    
+
     # Load training data
     train_sentence = np.load(FLAGS.train_sentence) # train_data
     train_question = np.load(FLAGS.train_question) # train_label
@@ -75,7 +75,7 @@ def main(unused):
     train_sentence_length = train_sentence_length[permutation]
     train_question_length = train_question_length[permutation]
     train_answer_length = train_answer_length[permutation]
-    
+
     # Training input function for estimator
     train_input_fn = tf.estimator.inputs.numpy_input_fn(
             x={"s": train_sentence, 'q': train_question, 'a': train_answer,
@@ -84,7 +84,7 @@ def main(unused):
         batch_size = model_params['batch_size'],
         num_epochs=FLAGS.num_epochs,
         shuffle=True)
-    
+
     # Load evaluation data
     eval_sentence = np.load(FLAGS.eval_sentence)
     eval_question = np.load(FLAGS.eval_question)
@@ -105,8 +105,8 @@ def main(unused):
 
     # define experiment
     exp_nn = tf.contrib.learn.Experiment(
-            estimator = nn, 
-            train_input_fn = train_input_fn, 
+            estimator = nn,
+            train_input_fn = train_input_fn,
             eval_input_fn = eval_input_fn,
             train_steps = None,
             min_eval_frequency = 100)
@@ -114,7 +114,7 @@ def main(unused):
     # train and evaluate
     if FLAGS.mode == 'train':
         exp_nn.train_and_evaluate()
-    
+
     elif FLAGS.mode == 'eval':
         exp_nn.evaluate(delay_secs = 0)
 
@@ -127,7 +127,7 @@ def main(unused):
 
         # prediction input function for estimator
         pred_input_fn = tf.estimator.inputs.numpy_input_fn(
-                x = {"s" : test_sentence, 'a': test_answer, 
+                x = {"s" : test_sentence, 'a': test_answer,
                     'len_s': test_sentence_length, 'len_a': test_answer_length},
                 y = None,
                 batch_size = model_params['batch_size'],
@@ -140,7 +140,7 @@ def main(unused):
         write_result(predict_results, FLAGS.dictionary)
         #print_result(predict_results)
 
-    
+
 if __name__ == '__main__':
     base_path = 'data/processed/mpqg_substitute_a_vocab_include_a/'
     parser = argparse.ArgumentParser()

@@ -67,7 +67,7 @@ embedding_vocab[2] = embedding['EOS'] # vocab['<EOS>'] = 2
 embedding_vocab[3] = embedding['UNKNOWN'] # vocab['<UNK>'] = 3
 
 unk_num = 0
-for word, idx in vocab.items():
+for word, idx in tqdm(vocab.items()):
     if word in embedding:
         embedding_vocab[idx] = embedding[word]
     else:
