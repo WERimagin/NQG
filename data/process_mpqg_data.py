@@ -328,7 +328,7 @@ for word in resized_dic:
 
 # Save dic
 with open(vocab_dir, 'w') as f:
-    print(list(word2idx.item())[0:3])
+    print(list(word2idx.items())[0:3])
     pkl.dump(word2idx, f)
 
 # Process with vocabulary
