@@ -273,6 +273,7 @@ def save_txt(dir_1, dir_2, data):
         for line in data:
             #f.write(' '.join(line).encode('utf-8') + '\n')
             f.write(' '.join(line) + '\n')
+
 if not os.path.exists(text_dir):
     os.makedirs(text_dir)
 
