@@ -325,14 +325,11 @@ idx = 4
 for word in resized_dic:
     word2idx[word] = idx
     idx += 1
-    if type(word) is not str:
-        print(word)
 
 
 
 # Save dic
-with open(vocab_dir, 'w') as f:
-    print(list(word2idx.items())[0:3])
+with open(vocab_dir, 'wb') as f:
     pkl.dump(word2idx, f)
 
 # Process with vocabulary
