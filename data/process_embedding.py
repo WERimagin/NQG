@@ -57,7 +57,7 @@ else:
 
 print("here")
 
-with open(os.path.join(dic_dir, dic_name)) as f:
+with open(os.path.join(dic_dir, dic_name),"rb") as f:
     vocab = pkl.load(f)
 
 print("here")
