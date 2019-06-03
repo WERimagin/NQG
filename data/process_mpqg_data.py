@@ -272,12 +272,13 @@ maxlen_a_test = max([len(answer) for answer in filtered_answer_test])
 def save_txt(dir_1, dir_2, data):
     with open(os.path.join(dir_1,dir_2), 'w') as f:
         for line in data:
-            f.write(' '.join(line).encode('utf-8') + '\n')
+            #f.write(' '.join(line).encode('utf-8') + '\n')
+            f.write(' '.join(line) + '\n')
 
 if not os.path.exists(text_dir):
     os.makedirs(text_dir)
 
-
+#text_dir=filtered_txt
 save_txt(text_dir, sentence_txt_train_origin, filtered_sentence_origin_train)
 save_txt(text_dir, sentence_txt_train, filtered_sentence_train)
 save_txt(text_dir, question_txt_train, filtered_question_train)
@@ -301,7 +302,6 @@ save_txt(text_dir, answer_txt_test, filtered_answer_test)
 # MAKE VOCABULARY WITH ALL FILTERED SENTENCES AND QUESTIONS >>>
 
 
-
 if not vocab_include_answer:
     all_sentence = filtered_sentence_train + filtered_question_train
 else:
@@ -314,7 +314,6 @@ for sentence in all_sentence:
 
 sorted_wordlist = [(k, wordcount[k]) for k in sorted(wordcount, key=wordcount.get, reverse=True)]
 
-print '>>> Resizing dictionary with frequent words...',
 resized_dic = dict(sorted_wordlist[:dic_size])
 
 word2idx = dict()
@@ -326,16 +325,14 @@ idx = 4
 for word in resized_dic:
     word2idx[word] = idx
     idx += 1
-print 'Complete\n'
+
+
 
 # Save dic
-print '>>> Saving Dic File...',
-with open(vocab_dir, 'w') as f:
+with open(vocab_dir, 'wb') as f:
     pkl.dump(word2idx, f)
-print 'Complete\n'
 
 # Process with vocabulary
-
 def process(data, vocab, maxlen, if_go = False):
     if if_go:
         maxlen = maxlen + 2 # include <GO> and <EOS>
@@ -356,8 +353,6 @@ def process(data, vocab, maxlen, if_go = False):
         processed_data[-1] = processed_data[-1] + [vocab['<PAD>']] * (maxlen - len(processed_data[-1]))
     return processed_data, length_data
 
-print '>>> Processing data with vocabulary...',
-
 # Processing training data
 processed_sentence_train, length_sentence_train = process(filtered_sentence_train, word2idx, maxlen_s_train, if_go = False)
 processed_question_train, length_question_train = process(filtered_question_train, word2idx, maxlen_q_train, if_go = True)
@@ -373,9 +368,6 @@ processed_sentence_test, length_sentence_test = process(filtered_sentence_test, 
 processed_question_test, length_question_test = process(filtered_question_test, word2idx, maxlen_q_test, if_go = True)
 processed_answer_test, length_answer_test = process(filtered_answer_test, word2idx, maxlen_a_test, if_go = False)
 
-print 'Complete\n'
-
-
 
 # MAKE VOCABULARY WITH ALL FILTERED SENTENCES AND QUESTIONS <<<
 
@@ -384,8 +376,6 @@ print 'Complete\n'
 # SAVE PROCESSED DATA >>>
 
 
-
-print '>>> Saving processed data...',
 np.save(sentence_outfile_train, processed_sentence_train)
 np.save(question_outfile_train, processed_question_train)
 np.save(answer_outfile_train, processed_answer_train)
@@ -406,8 +396,6 @@ np.save(answer_outfile_test, processed_answer_test)
 np.save(length_sentence_outfile_test, length_sentence_test)
 np.save(length_question_outfile_test, length_question_test)
 np.save(length_answer_outfile_test, length_answer_test)
-print 'Complete\n'
-
 
 
 # SAVE PROCESSED DATA <<<
