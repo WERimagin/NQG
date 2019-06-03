@@ -18,7 +18,7 @@ def remove_eos(sentence, eos = '<EOS>', pad = '<PAD>'):
 
 def write_result(predict_results, dic_path):
     print('Load dic file...')
-    with open(dic_path) as dic:
+    with open(dic_path,"rb") as dic:
         dic_file = pkl.load(dic)
     reversed_dic = dict((y,x) for x,y in dic_file.iteritems())
 
