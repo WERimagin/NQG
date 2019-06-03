@@ -33,7 +33,7 @@ if not os.path.exists('processed/'+ glove + '.dic.npy'):
 
     # Process GloVe
     embedding = dict()
-    for line in tqdm(lines):
+    for line in tqdm(lines[0:100]):
         splited = line.split()
         embedding[splited[0]] = map(float, splited[1:])
 
