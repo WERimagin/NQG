@@ -23,6 +23,7 @@ glove = 'glove.840B.300d'
 
 # LOAD & PROCESS GloVe >>>
 
+print("here")
 
 if not os.path.exists('processed/'+ glove + '.dic.npy'):
     # Load GloVe
@@ -39,6 +40,7 @@ if not os.path.exists('processed/'+ glove + '.dic.npy'):
     # Save processed GloVe as dic file
     np.save('processed/' + glove + '.dic', embedding)
 else:
+    print("here")
     embedding = np.load('processed/' + glove + '.dic.npy').item()
 
 
