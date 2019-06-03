@@ -35,7 +35,7 @@ if not os.path.exists('processed/'+ glove + '.dic.npy'):
     embedding = dict()
     for line in tqdm(lines):
         splited = line.split()
-        embedding[splited[0]] = [float(s) for s in splited[1:]]
+        embedding[" ".join(splited[0:-300])] = [float(s) for s in splited[-300:]]
 
     # Save processed GloVe as dic file
     #np.save('processed/' + glove + '.dic', embedding)
