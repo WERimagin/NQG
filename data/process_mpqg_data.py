@@ -201,7 +201,7 @@ def substitute_answer(sentence, answer):
         concat_sentence = ' '.join(line)
         concat_answer = ' '.join(answer[i])
         #substitute_sentence = string.replace(concat_sentence, concat_answer, '<a>')
-        concat_sentence.replace(concat_answer,'<a>')
+        substitute_sentence=concat_sentence.replace(concat_answer,'<a>')
         replaced_sentence.append(substitute_sentence.split())
 
     return replaced_sentence
