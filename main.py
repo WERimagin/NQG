@@ -28,7 +28,7 @@ def write_result(predict_results, dic_path):
         while True:
             try :
                 print(predict_results,type(predict_results))
-                output = predict_results.next()
+                output = predict_results.__next__()
                 output = output['question'].tolist()
                 if -1 in output: # beam search
                     output = output[:output.index(-1)]
