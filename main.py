@@ -20,7 +20,8 @@ def write_result(predict_results, dic_path):
     print('Load dic file...')
     with open(dic_path,"rb") as dic:
         dic_file = pkl.load(dic)
-    reversed_dic = dict((y,x) for x,y in dic_file.iteritems())
+    print(type(dic_file))
+    reversed_dic = dict((y,x) for x,y in dic_file.items())
 
     print('Writing into file...')
     with open(FLAGS.pred_dir, 'w') as f:
