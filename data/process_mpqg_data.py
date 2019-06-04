@@ -26,17 +26,18 @@ DEV_FILE = 'mpqg_data/dev_sent_pre.json'
 TEST_FILE=  'mpqg_data/test_sent_pre.json'
 
 origin_path="mpqg_data/"
-train_file_sentence=os.path.join(origin_path,"squad-src-train-interro.txt")
-train_file_question=os.path.join(origin_path,"squad-tgt-train-interro.txt")
-train_file_answer=os.path.join(origin_path,"squad-ans-train-interro.txt")
+setting="normal"
+train_file_sentence=os.path.join(origin_path,"squad-src-train-normal.txt")
+train_file_question=os.path.join(origin_path,"squad-tgt-train-normal.txt")
+train_file_answer=os.path.join(origin_path,"squad-ans-train-normal.txt")
 
-dev_file_sentence=os.path.join(origin_path,"squad-src-val-interro.txt")
-dev_file_question=os.path.join(origin_path,"squad-tgt-val-interro.txt")
-dev_file_answer=os.path.join(origin_path,"squad-ans-val-interro.txt")
+dev_file_sentence=os.path.join(origin_path,"squad-src-val-normal.txt")
+dev_file_question=os.path.join(origin_path,"squad-tgt-val-normal.txt")
+dev_file_answer=os.path.join(origin_path,"squad-ans-val-normal.txt")
 
-test_file_sentence=os.path.join(origin_path,"squad-src-test-interro.txt")
-test_file_question=os.path.join(origin_path,"squad-tgt-test-interro.txt")
-test_file_answer=os.path.join(origin_path,"squad-ans-test-interro.txt")
+test_file_sentence=os.path.join(origin_path,"squad-src-test-normal.txt")
+test_file_question=os.path.join(origin_path,"squad-tgt-test-normal.txt")
+test_file_answer=os.path.join(origin_path,"squad-ans-test-normal.txt")
 
 
 
