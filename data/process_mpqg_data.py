@@ -12,7 +12,7 @@ from collections import defaultdict
 
 # Use all data or cut by length
 # testのために変更
-cut_by_length = False
+cut_by_length = True
 
 # Maximum length for train/dev
 cut_s_train = 60
