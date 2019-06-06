@@ -124,7 +124,7 @@ def main(unused):
         test_sentence = np.load(FLAGS.test_sentence)
         test_answer = np.load(FLAGS.test_answer)
         test_sentence_length = np.load(FLAGS.test_sentence_length)
-        test_answer_length = np.load(FLAGS.test_answer_length)
+        test_answer_length = np.load(FLAGS.test_answer_length)      
 
         # prediction input function for estimator
         pred_input_fn = tf.estimator.inputs.numpy_input_fn(
