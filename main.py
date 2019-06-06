@@ -121,21 +121,10 @@ def main(unused):
 
     else: # 'pred'
         # Load test data
-        if 1:
-            test_sentence = np.load(FLAGS.test_sentence)
-            test_answer = np.load(FLAGS.test_answer)
-            test_sentence_length = np.load(FLAGS.test_sentence_length)
-            test_answer_length = np.load(FLAGS.test_answer_length)
-        if 0:
-            test_sentence = np.load(FLAGS.train_sentence)
-            test_answer = np.load(FLAGS.train_answer)
-            test_sentence_length = np.load(FLAGS.train_sentence_length)
-            test_answer_length = np.load(FLAGS.train_answer_length)
-        if 0:
-            test_sentence = np.load(FLAGS.eval_sentence)
-            test_answer = np.load(FLAGS.eval_answer)
-            test_sentence_length = np.load(FLAGS.eval_sentence_length)
-            test_answer_length = np.load(FLAGS.eval_answer_length)
+        test_sentence = np.load(FLAGS.test_sentence)
+        test_answer = np.load(FLAGS.test_answer)
+        test_sentence_length = np.load(FLAGS.test_sentence_length)
+        test_answer_length = np.load(FLAGS.test_answer_length)
 
         # prediction input function for estimator
         pred_input_fn = tf.estimator.inputs.numpy_input_fn(
