@@ -44,9 +44,9 @@ if 1:
     train_file_question=os.path.join(origin_path,"squad-tgt-train-{}.txt".format(setting))
     train_file_answer=os.path.join(origin_path,"squad-ans-train-{}.txt".format(setting))
 
-    dev_file_sentence=os.path.join(origin_path,"squad-src-dev-{}.txt".format(setting))
-    dev_file_question=os.path.join(origin_path,"squad-tgt-dev-{}.txt".format(setting))
-    dev_file_answer=os.path.join(origin_path,"squad-ans-dev-{}.txt".format(setting))
+    dev_file_sentence=os.path.join(origin_path,"squad-src-val-{}.txt".format(setting))
+    dev_file_question=os.path.join(origin_path,"squad-tgt-val-{}.txt".format(setting))
+    dev_file_answer=os.path.join(origin_path,"squad-ans-val-{}.txt".format(setting))
 
     test_file_sentence=os.path.join(origin_path,"squad-src-test-{}.txt".format(setting))
     test_file_question=os.path.join(origin_path,"squad-tgt-test-{}.txt".format(setting))
