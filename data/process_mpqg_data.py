@@ -29,16 +29,17 @@ TEST_FILE=  'mpqg_data/test_sent_pre.json'
 origin_path="mpqg_data/"
 setting="normal"
 
-train_file_sentence=os.path.join(origin_path,"squad-src-train-normal.txt")
-train_file_question=os.path.join(origin_path,"squad-tgt-train-normal.txt")
-train_file_answer=os.path.join(origin_path,"squad-ans-train-normal.txt")
-
-dev_file_sentence=os.path.join(origin_path,"squad-src-val-normal.txt")
-dev_file_question=os.path.join(origin_path,"squad-tgt-val-normal.txt")
-dev_file_answer=os.path.join(origin_path,"squad-ans-val-normal.txt")
-
 if 0:
-    setting="full-normal"
+    train_file_sentence=os.path.join(origin_path,"squad-src-train-normal.txt")
+    train_file_question=os.path.join(origin_path,"squad-tgt-train-normal.txt")
+    train_file_answer=os.path.join(origin_path,"squad-ans-train-normal.txt")
+
+    dev_file_sentence=os.path.join(origin_path,"squad-src-val-normal.txt")
+    dev_file_question=os.path.join(origin_path,"squad-tgt-val-normal.txt")
+    dev_file_answer=os.path.join(origin_path,"squad-ans-val-normal.txt")
+
+if 1:
+    setting="interro"
     train_file_sentence=os.path.join(origin_path,"squad-src-train-{}.txt".format(setting))
     train_file_question=os.path.join(origin_path,"squad-tgt-train-{}.txt".format(setting))
     train_file_answer=os.path.join(origin_path,"squad-ans-train-{}.txt".format(setting))
@@ -47,20 +48,9 @@ if 0:
     dev_file_question=os.path.join(origin_path,"squad-tgt-dev-{}.txt".format(setting))
     dev_file_answer=os.path.join(origin_path,"squad-ans-dev-{}.txt".format(setting))
 
-if 0:
-    test_file_sentence=os.path.join(origin_path,"squad-src-test-normal.txt")
-    test_file_question=os.path.join(origin_path,"squad-tgt-test-normal.txt")
-    test_file_answer=os.path.join(origin_path,"squad-ans-test-normal.txt")
-if 1:
-    setting="full-normal"
-    test_file_sentence=os.path.join(origin_path,"squad-src-train-{}.txt".format(setting))
-    test_file_question=os.path.join(origin_path,"squad-tgt-train-{}.txt".format(setting))
-    test_file_answer=os.path.join(origin_path,"squad-ans-train-{}.txt".format(setting))
-if 0:
-    setting="full-normal"
-    test_file_sentence=os.path.join(origin_path,"squad-src-dev-{}.txt".format(setting))
-    test_file_question=os.path.join(origin_path,"squad-tgt-dev-{}.txt".format(setting))
-    test_file_answer=os.path.join(origin_path,"squad-ans-dev-{}.txt".format(setting))
+    test_file_sentence=os.path.join(origin_path,"squad-src-test-{}.txt".format(setting))
+    test_file_question=os.path.join(origin_path,"squad-tgt-test-{}.txt".format(setting))
+    test_file_answer=os.path.join(origin_path,"squad-ans-test-{}.txt".format(setting))
 
 
 output_dir = 'processed/mpqg_substitute_a_vocab_include_a/'
