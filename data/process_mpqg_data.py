@@ -53,9 +53,9 @@ if 1:
         test_file_question=os.path.join(origin_path,"squad-tgt-test-{}.txt".format(setting))
         test_file_answer=os.path.join(origin_path,"squad-ans-test-{}.txt".format(setting))
     if 1:
-        train_file_sentence=os.path.join(origin_path,"squad-src-train-{}.txt".format(setting))
-        train_file_question=os.path.join(origin_path,"squad-tgt-train-{}.txt".format(setting))
-        train_file_answer=os.path.join(origin_path,"squad-ans-train-{}.txt".format(setting))
+        test_file_sentence=os.path.join(origin_path,"squad-src-train-{}.txt".format(setting))
+        test_file_question=os.path.join(origin_path,"squad-tgt-train-{}.txt".format(setting))
+        test_file_answer=os.path.join(origin_path,"squad-ans-train-{}.txt".format(setting))
 
 
 output_dir = 'processed/mpqg_substitute_a_vocab_include_a/'
